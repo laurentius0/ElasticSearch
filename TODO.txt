@@ -1,0 +1,5 @@
+1. Tabs --> spaties
+2. Facetten maken
+3. Elastic search maken
+4. Website maken
+5. 
