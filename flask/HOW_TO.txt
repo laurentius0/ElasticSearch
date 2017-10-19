@@ -1,0 +1,8 @@
+Installeer eerst flask. 
+
+Dan kun je het volgende doen: FLASK_APP=form.py flask run --host=0.0.0.0
+of --host=0.0.0.0 weglaten, dan runt ie op localhost.
+Draait altijd op poort 5000.
+
+Voor meer handig info (ongeveer alles wat we nodig hebben vgm) zie:
+http://flask.pocoo.org/docs/0.12/quickstart/#quickstart
