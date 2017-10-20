@@ -11,27 +11,40 @@
         <input type="text" name="query">
         <input type="submit" name="my-form" value="ga">
     </form>
-    <ul>
+    <br>
+
     {%if result is not string %}
         {% for r in result %}
-            <li>
-                <p>
+        <table width=70% align="left">
+          <tr>
+            <th colspan="3">
                 {% if r['_source']['Title']|length > 80  %}
                     <a href="{{ r['_source']['Download'] }}">{{ r['_source']['Title'][:80] }}...</a>
                 {% else %}
                     <a href="{{ r['_source']['Download'] }}">{{ r['_source']['Title'] }}</a>
                 {%endif%}
-                </p>
-
+            </th>
+          </tr>
+          <tr>
+            <td colspan="3">
                 {% if r['_source']['Abstract'] %}
                     {{ r['_source']['Abstract'][:500] }}
                 {% else %}
                     No abstract found.
                 {% endif %}
-
-            </li>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            {{ r['_source'][' Author'] }}
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <br>
         {% endfor %}
     {%endif%}
-    </ul>
+
 </body>
 </html>
