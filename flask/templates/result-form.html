@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+
 <body>
     <h1>Converted Text: {%if text%} {{ text }} {% endif %}<h1>
     <h1>Enter some text to try again</h1>
