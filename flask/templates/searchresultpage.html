@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+
 <body>
 	<p>Search text: {%if result%} {{ result }} {% endif %}</p>
     <h1>Enter some text to search through the database!</h1>
