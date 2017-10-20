@@ -17,3 +17,46 @@ table, th, td   { border: 0px; text-align: left; margin: 10px; }
 .flash          { background: #cee5F5; padding: 0.5em;
                   border: 1px solid #aacbe2; }
 .error          { background: red; padding: 0.5em; }
+input[type=text]{ text-align: left;
+                  width: 150px;
+		              box-sizing: border-box;
+		              border: 2px solid #ccc;
+		              border-radius: 4px;
+		              font-size: 16px;
+		              background-color: white;
+		              background-image: url('https://www.w3schools.com/howto/searchicon.png');
+		              background-position: 10px 10px; 
+		              background-repeat: no-repeat;
+		              padding: 12px 5px 12px 40px;
+		              -webkit-transition: width 0.4s ease-in-out;
+		              transition: width 0.4s ease-in-out; }
+.button {         display: inline-block;
+	                border-radius: 4px;
+	                background-color: #ed8d3b;
+	                border: 2px solid #ed8d3b;
+	                color: #FFFFFF;
+	                text-align: center;
+	                font-size: 16px;
+	                padding: 12px 5px;
+	                width: 80px;
+	                transition: all 0.5s;
+	                cursor: pointer;
+	                margin: 5px; }
+.button span {    cursor: pointer;
+	                display: inline-block;
+	                position: relative;
+	                transition: 0.5s; }
+.button span:after {
+	                content: '\00bb';
+	                position: absolute;
+	                opacity: 0;
+	                top: 0;
+	                right: -20px;
+	                transition: 0.5s; }
+.button:hover span {
+	                padding-right: 25px; }
+.button:hover span:after {
+	                opacity: 1;
+	                right: 0; }
+input[type=text]:focus {
+		              width: 25%; }
