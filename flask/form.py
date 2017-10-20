@@ -24,7 +24,7 @@ def search_page():
     return render_template("searchpage.html")
 
 def getQuery(text):
-    query =  {"query": { "match": { "Abstract": text} },"size": 1 }
+    query = {"query": {"query_string": {"query" : text}}}
     return query
 
 @app.route('/searchresultpage/')
@@ -32,11 +32,11 @@ def search_result_page():
     if request.method=="GET":
         searchtext = request.args['query']
         query = getQuery(searchtext)
-        searchresult = es.search(index='uvascripties', doc_type='scripties', body=query)
-        if searchresult["hits"]["total"] > 0 and "Abstract" in searchresult["hits"]["hits"][0]["_source"]:
-            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"][0]["_source"]["Abstract"])
+        searchresult = es.search(index='database',  body=query)
+        if searchresult["hits"]["total"] > 0:
+            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"])
         else:
-            return render_template("searchresultpage.html", result = "No abstract")
+            return render_template("searchresultpage.html", result = "No result found.")
     else:
         return render_template("searchpage.html")
 
