@@ -57,8 +57,6 @@ def simple():
     # Display the generated image:
     # the matplotlib way:
     import matplotlib.pyplot as plt
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis("off")
 
     # lower max_font_size
     wordcloud = WordCloud(max_font_size=40).generate(text)
