@@ -60,9 +60,7 @@ def simple():
 
     # lower max_font_size
     wordcloud = WordCloud(max_font_size=40).generate(text)
-    plt.figure()
-    plt.imshow(wordcloud, interpolation="bilinear")
-    plt.axis("off")
+
 
     # Convert to PIL image
     image = wordcloud.to_image()
