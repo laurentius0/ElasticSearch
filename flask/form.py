@@ -40,5 +40,40 @@ def search_result_page():
     else:
         return render_template("searchpage.html")
 
+@app.route("/wordcloud.png")
+def simple():
+    import urllib.parse
+    import base64
+
+    from io import BytesIO
+    from wordcloud import WordCloud
+
+    # Todo: text van queries gebruiken.
+    text = "De kaas is een grote ronde dikke kaas die vrij dikke is is een dikke kaas"
+
+    # Generate a word cloud image
+    wordcloud = WordCloud().generate(text)
+
+    # Display the generated image:
+    # the matplotlib way:
+    import matplotlib.pyplot as plt
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+
+    # lower max_font_size
+    wordcloud = WordCloud(max_font_size=40).generate(text)
+    plt.figure()
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+
+    # Convert to PIL image
+    image = wordcloud.to_image()
+    buffered = BytesIO()
+    image.save(buffered, format="png")
+    img_str = base64.b64encode(buffered.getvalue())
+
+    # image.show()
+    return render_template("image.html", img_data=urllib.parse.quote(img_str))
+
 if __name__ == '__main__':
     app.run()
