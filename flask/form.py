@@ -71,22 +71,28 @@ def search_result_page():
         query = getQuery(searchtext)
         searchresult = es.search(index='database',  body=query)
         if searchresult["hits"]["total"] > 0:
+            for result in searchresult["hits"]["hits"]:
+                if 'Abstract' in result['_source'].keys():
+                    abstracts = result['_source']['Abstract']
+                    abstracts = clean_text(abstracts)
+                    result['_source']['wordcloud'] = generateWordCloud(abstracts)
             return render_template("searchresultpage.html", result = searchresult["hits"]["hits"])
         else:
             return render_template("searchresultpage.html", result = "No result found.")
     else:
         return render_template("searchpage.html")
 
-@app.route("/wordcloud.png")
-def simple():
+def clean_text(text):
+    words = text.lower().split(" ")
+    words = list(filter(lambda a: a not in ['geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
+    return ' '.join(words)
+
+def generateWordCloud(text):
     import urllib.parse
     import base64
 
     from io import BytesIO
     from wordcloud import WordCloud
-
-    # Todo: text van queries gebruiken.
-    text = "De kaas is een grote ronde dikke kaas die vrij dikke is is een dikke kaas"
 
     # Generate a word cloud image
     wordcloud = WordCloud().generate(text)
@@ -106,7 +112,7 @@ def simple():
     img_str = base64.b64encode(buffered.getvalue())
 
     # image.show()
-    return render_template("image.html", img_data=urllib.parse.quote(img_str))
+    return urllib.parse.quote(img_str)
 
 if __name__ == '__main__':
     app.run()
