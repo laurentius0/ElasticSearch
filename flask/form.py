@@ -57,7 +57,14 @@ def advanced_search_page():
     if request.method=="GET":
         r_dict = request.args.to_dict()
         searchresult = build_query(r_dict)
+        print("blag")
         if searchresult["hits"]["total"] > 0:
+            for result in searchresult["hits"]["hits"]:
+                print("hey")
+                if 'Abstract' in result['_source'].keys():
+                    abstracts = result['_source']['Abstract']
+                    abstracts = clean_text(abstracts)
+                    result['_source']['wordcloud'] = generateWordCloud(abstracts)
             return render_template("searchresultpage.html", result = searchresult["hits"]["hits"])
         else:
             return render_template("searchresultpage.html", result = "No result found.")
