@@ -44,6 +44,9 @@
         </table>
         <br>
         {% endfor %}
+        {% if cloud %}
+            <img src="data:image/png;base64,{{cloud}}"/>
+        {% endif %}
     {%endif%}
 
 </body>
