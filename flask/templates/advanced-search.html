@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+
+<body>
+    <h1>Enter some text to search through the database!</h1>
+    <form action="/searchresultpage_adv/" method="GET">
+        <table style="width:100%">
+        <tr><td>Abstract :</td>
+            <td><input type="text" name="Abstract"></td>
+        </tr><tr>
+            <td>Author :</td>
+            <td><input type="text" name=" Author"></td>
+        </tr><tr>
+            <td>Year :</td>
+            <td><input type="text" name="Year"></td>
+        </tr><tr>
+            <td></td>
+            <td><input type="submit" name="my-form" value="Send"></td>
+        </tr>
+        <table>
+    </form>
+</body>
+
+
+
+</html>

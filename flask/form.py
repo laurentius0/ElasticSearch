@@ -27,6 +27,43 @@ def getQuery(text):
     query = {"query": {"query_string": {"query" : text}}}
     return query
 
+@app.route('/advanced-search.html')
+def advanced_search():
+    return render_template("advanced-search.html")
+
+def build_query(query):
+    """
+    query: dictionary with results
+    """
+
+    k = list(query.keys())
+
+    strQ = ""
+    for i in range(len(k)-1):
+        # -1 because the last element is my_form, we dont want that
+        if query[k[i]] != "":
+            strQ += "({0}:{1}) AND".format(k[i], query[k[i]])
+    strQ = strQ[:-4]
+
+    q = {"query": {"query_string":{"query" : strQ}}}
+
+    res= es.search(index="database", body=q, size=100)
+
+    return res
+
+
+@app.route('/searchresultpage_adv/')
+def advanced_search_page():
+    if request.method=="GET":
+        r_dict = request.args.to_dict()
+        searchresult = build_query(r_dict)
+        if searchresult["hits"]["total"] > 0:
+            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"])
+        else:
+            return render_template("searchresultpage.html", result = "No result found.")
+    else:
+        return render_template("searchpage.html")
+
 @app.route('/searchresultpage/')
 def search_result_page():
     if request.method=="GET":
