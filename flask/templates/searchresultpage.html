@@ -29,6 +29,8 @@
             <td colspan="3">
                 {% if r['_source']['Abstract'] %}
                     {{ r['_source']['Abstract'][:500] }}
+                    <br>
+                    <img src="data:image/png;base64,{{r['_source']['wordcloud']}}"/>
                 {% else %}
                     No abstract found.
                 {% endif %}
@@ -44,9 +46,7 @@
         </table>
         <br>
         {% endfor %}
-        {% if cloud %}
-            <img src="data:image/png;base64,{{cloud}}"/>
-        {% endif %}
+
     {%endif%}
 
 </body>

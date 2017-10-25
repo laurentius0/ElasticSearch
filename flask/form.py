@@ -34,21 +34,20 @@ def search_result_page():
         query = getQuery(searchtext)
         searchresult = es.search(index='database',  body=query)
         if searchresult["hits"]["total"] > 0:
-            all_abstracts = ''
             for result in searchresult["hits"]["hits"]:
                 if 'Abstract' in result['_source'].keys():
-                    all_abstracts = all_abstracts + result['_source']['Abstract']
-                    all_abstracts = clean_text(all_abstracts)
-            cloud_image = generateWordCloud(all_abstracts)
-            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"], cloud = cloud_image)
+                    abstracts = result['_source']['Abstract']
+                    abstracts = clean_text(abstracts)
+                    result['_source']['wordcloud'] = generateWordCloud(abstracts)
+            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"])
         else:
-            return render_template("searchresultpage.html", result = "No result found.", cloud = 0)
+            return render_template("searchresultpage.html", result = "No result found.")
     else:
         return render_template("searchpage.html")
 
 def clean_text(text):
     words = text.lower().split(" ")
-    words = list(filter(lambda a: a not in ['thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
+    words = list(filter(lambda a: a not in ['geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
     return ' '.join(words)
 
 def generateWordCloud(text):
