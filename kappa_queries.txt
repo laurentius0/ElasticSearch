@@ -1,0 +1,146 @@
+<topic number="1"  >
+    <query>q learning reinforcement learning</query>
+    <language> both </language>
+    <description>Find a thesis discussing q learning, not a thesis merely using q learning in a single experiment. It must be the main subject.
+    </description>
+</topic>
+J1:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+J2:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+<topic number="2"  >
+    <query>traumatische evaringen babies</query>
+    <language> Dutch </language>
+    <description>I'm looking about how babies process traumatic experiences. 
+    </description>
+</topic>
+J1:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+J2:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+<topic number="3"  >
+    <query>schadevergoeding verkrachting</query>
+    <description>Find information about how compensation should be handled after a rape.
+    </description>
+</topic>
+J1:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+J2:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+<topic number="4"  >
+    <query>travelling light speed</query>
+    <description>I'm looking for information travelling potentially at light speed.
+    </description>
+</topic>
+J1:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+J2:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+<topic number="5"  >
+    <query>bitcoin blockchain kwantumcomputer</query>
+    <description>Find information on the Kansas City Southern railroad.
+    </description>
+</topic>
+J1:
+1x
+2x
+3x
+4x
+5x
+6x
+7x
+8x
+9x
+10x
+
+J2:
+1x
+2x
+3x
+4x
+5x
+6x
+7x
+8x
+9x
+10x
