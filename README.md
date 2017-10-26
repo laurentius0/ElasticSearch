@@ -1,82 +1,107 @@
 # ElasticSearch groupassignment by
-Pieter Kronemeijer 11064838
-Dico van Leeuwen 11075546
-Douwe van der Wal 110422206
-Laurens Weitkamp 11011629
+Pieter Kronemeijer 11064838<br>
+Dico van Leeuwen 11075546<br>
+Douwe van der Wal 110422206<br>
+Laurens Weitkamp 11011629<br>
 
 # Link to presentation:
 https://docs.google.com/presentation/d/1lkmAWZmtFy3g6WhaI--t2rL-VpRWA0U3klLjeKVphX4/edit?usp=sharing
 
 # SERP page
-The page for each point should contain, all rather briefly,
 
-    What you did and why you choose to do it in your special way.
+What you did and why you choose to do it in your special way.
 
-    Examples of what works, and what does not work (very well).
+    todo
 
-    An evaluation of the quality of your work in 3-4 sentences.
-    </ol></li>
+Examples of what works, and what does not work (very well).
 
-    Clickable links to a live working demo are highly appreciated.
-    </ul>
+    todo
+    
+An evaluation of the quality of your work in 3-4 sentences.
+    
+    todo
+
+Clickable links to a live working demo are highly appreciated.
+    
+    todo
     
 # Advanced search
-The page for each point should contain, all rather briefly,
+What you did and why you choose to do it in your special way.
 
-    What you did and why you choose to do it in your special way.
+    todo
 
-    Examples of what works, and what does not work (very well).
+Examples of what works, and what does not work (very well).
 
-    An evaluation of the quality of your work in 3-4 sentences.
-    </ol></li>
+    todo
+    
+An evaluation of the quality of your work in 3-4 sentences.
+    
+    todo
 
-    Clickable links to a live working demo are highly appreciated.
-    </ul>
+Clickable links to a live working demo are highly appreciated.
+    
+    todo
 # Wordcloud
-The page for each point should contain, all rather briefly,
+What you did and why you choose to do it in your special way.
 
-    What you did and why you choose to do it in your special way.
+    todo
 
-    Examples of what works, and what does not work (very well).
+Examples of what works, and what does not work (very well).
 
-    An evaluation of the quality of your work in 3-4 sentences.
-    </ol></li>
+    todo
+    
+An evaluation of the quality of your work in 3-4 sentences.
+    
+    todo
 
-    Clickable links to a live working demo are highly appreciated.
-    </ul>
+Clickable links to a live working demo are highly appreciated.
+    
+    todo
 # Timeline
-The page for each point should contain, all rather briefly,
+What you did and why you choose to do it in your special way.
 
-    What you did and why you choose to do it in your special way.
+    todo
 
-    Examples of what works, and what does not work (very well).
+Examples of what works, and what does not work (very well).
 
-    An evaluation of the quality of your work in 3-4 sentences.
-    </ol></li>
+    todo
+    
+An evaluation of the quality of your work in 3-4 sentences.
+    
+    todo
 
-    Clickable links to a live working demo are highly appreciated.
-    </ul>
+Clickable links to a live working demo are highly appreciated.
+    
+    todo
 # Faceted results
-The page for each point should contain, all rather briefly,
+What you did and why you choose to do it in your special way.
 
-    What you did and why you choose to do it in your special way.
+    todo
 
-    Examples of what works, and what does not work (very well).
+Examples of what works, and what does not work (very well).
 
-    An evaluation of the quality of your work in 3-4 sentences.
-    </ol></li>
+    todo
+    
+An evaluation of the quality of your work in 3-4 sentences.
+    
+    todo
 
-    Clickable links to a live working demo are highly appreciated.
-    </ul>
+Clickable links to a live working demo are highly appreciated.
+    
+    todo
 # Kappa score
-The page for each point should contain, all rather briefly,
+What you did and why you choose to do it in your special way.
 
-    What you did and why you choose to do it in your special way.
+    todo
 
-    Examples of what works, and what does not work (very well).
+Examples of what works, and what does not work (very well).
 
-    An evaluation of the quality of your work in 3-4 sentences.
-    </ol></li>
+    todo
+    
+An evaluation of the quality of your work in 3-4 sentences.
+    
+    todo
 
-    Clickable links to a live working demo are highly appreciated.
-    </ul>
+Clickable links to a live working demo are highly appreciated.
+    
+    todo
