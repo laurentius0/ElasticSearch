@@ -28,9 +28,16 @@ def index(path = '/home/pieter/Documents/Zoekmachines dataset 5+GB/pdfdata/',
     # list all files in the data folder
     docnames = os.listdir(path)
     # index all files that end with .pkl
-    for i, file in enumerate([docname for docname in docnames[:ndocs] if docname[-3:] == "pkl"]):
-        file = pickle.load(open(path + file, "rb"))
-        es.index(index=index_name, doc_type=type_name, id=i, body=file)
+    for i, picklename in enumerate([docname for docname in docnames[:ndocs] if docname[-3:] == "pkl"]):
+        if (picklename[:-3] + "txt" in docnames):
+            file = pickle.load(open(path + picklename, "rb"))
+            file["Author"] = file[" Author"]
+            del file[" Author"]
+            file["Download"] = file["Download"].replace('http://www.scriptiesonline.uba.uva.nl/', 'http://www.arno.uva.nl/')
+            with open(path + picklename[:-3] + "txt", 'r') as textfile:
+                file["Text"] = ''.join([line[:-1] for line in textfile.readlines()])
+                 # textfile.read()
+            es.index(index=index_name, doc_type=type_name, id=i, body=file)
 
     return i+1
 
