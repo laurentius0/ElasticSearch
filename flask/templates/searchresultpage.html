@@ -26,21 +26,22 @@
             </th>
           </tr>
           <tr>
-            <td colspan="3">
+            <td colspan="2">
                 {% if r['_source']['Abstract'] %}
                     {{ r['_source']['Abstract'][:500] }}
-                    <br>
-                    <img src="data:image/png;base64,{{r['_source']['wordcloud']}}"/>
                 {% else %}
                     No abstract found.
                 {% endif %}
+                </td><td colspan="1">
+                    <img src="data:image/png;base64,{{r['_source']['wordcloud']}}"/>
+                </td>
             </td>
           </tr>
           <tr>
             <td>
             {{ r['_source'][' Author'] }}
             </td>
-            <td>{{ r['_source']['Year'] }}</td>
+            <td><a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}&my-form=Zoek">{{ r['_source']['Year'] }}</a></td>
             <td></td>
           </tr>
         </table>

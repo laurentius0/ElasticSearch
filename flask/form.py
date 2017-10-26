@@ -47,7 +47,7 @@ def build_query(query):
 
     q = {"query": {"query_string":{"query" : strQ}}}
 
-    res= es.search(index="database", body=q, size=100)
+    res= es.search(index="database", body=q, size=10)
 
     return res
 
@@ -57,10 +57,8 @@ def advanced_search_page():
     if request.method=="GET":
         r_dict = request.args.to_dict()
         searchresult = build_query(r_dict)
-        print("blag")
         if searchresult["hits"]["total"] > 0:
             for result in searchresult["hits"]["hits"]:
-                print("hey")
                 if 'Abstract' in result['_source'].keys():
                     abstracts = result['_source']['Abstract']
                     abstracts = clean_text(abstracts)
