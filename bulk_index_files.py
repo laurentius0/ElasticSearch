@@ -35,7 +35,8 @@ def index(path = '/home/pieter/Documents/Zoekmachines dataset 5+GB/pdfdata/',
             del file[" Author"]
             file["Download"] = file["Download"].replace('http://www.scriptiesonline.uba.uva.nl/', 'http://www.arno.uva.nl/')
             with open(path + picklename[:-3] + "txt", 'r') as textfile:
-                file["Text"] = textfile.read()
+                file["Text"] = ''.join([line[:-1] for line in textfile.readlines()])
+                 # textfile.read()
             es.index(index=index_name, doc_type=type_name, id=i, body=file)
 
     return i+1
