@@ -113,7 +113,7 @@ def search_result_page():
 
 def clean_text(text):
     words = text.lower().split(" ")
-    words = list(filter(lambda a: a not in ['geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
+    words = list(filter(lambda a: a not in ['also', 'waardoor', 'gaan','die', 'hun', 'paragraaf', 'kernpunten', 'niet','geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
     return ' '.join(words)
 
 def generateWordCloud(text):
