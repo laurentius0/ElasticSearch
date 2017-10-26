@@ -3,20 +3,20 @@ import os
 import sys
 import pickle
 from elasticsearch import Elasticsearch
+import time
+import progressbar
 
 # index name
-index_name = 'uvascripties'
+index_name = 'database'
 
 # type name
-type_name = 'scripties'
+type_name = 'scriptie'
 
 # host of the elasticsearch service
 HOST = 'localhost:9200'
 
 # get instance of elasticsearch
 es = Elasticsearch(hosts=[HOST])
-
-
 
 def index(path = '/home/pieter/Documents/Zoekmachines dataset 5+GB/pdfdata/',
           ndocs = 10):
@@ -27,17 +27,21 @@ def index(path = '/home/pieter/Documents/Zoekmachines dataset 5+GB/pdfdata/',
 
     # list all files in the data folder
     docnames = os.listdir(path)
+    bar = progressbar.ProgressBar(max_value=45000)
     # index all files that end with .pkl
     for i, picklename in enumerate([docname for docname in docnames[:ndocs] if docname[-3:] == "pkl"]):
         if (picklename[:-3] + "txt" in docnames):
             file = pickle.load(open(path + picklename, "rb"))
-            file["Author"] = file[" Author"]
-            del file[" Author"]
-            file["Download"] = file["Download"].replace('http://www.scriptiesonline.uba.uva.nl/', 'http://www.arno.uva.nl/')
+            if " Author" in file.keys():
+                file["Author"] = file[" Author"]
+                del file[" Author"]
+            if "Download" in file.keys():
+                file["Download"] = file["Download"].replace('http://www.scriptiesonline.uba.uva.nl/', 'http://www.arno.uva.nl/')
             with open(path + picklename[:-3] + "txt", 'r') as textfile:
                 file["Text"] = ''.join([line[:-1] for line in textfile.readlines()])
-                 # textfile.read()
             es.index(index=index_name, doc_type=type_name, id=i, body=file)
+            bar +=1
+            # print(i)
 
     return i+1
 
@@ -71,9 +75,11 @@ def help():
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         n_indexed = index()
-        test(n_indexed)
+        # time.sleep(3)
+        # test(n_indexed)
     elif len(sys.argv) == 3:
         n_indexed = index(sys.argv[1], int(sys.argv[2]))
-        test(n_indexed)
+        # time.sleep(1)
+        # test(n_indexed)
     else:
         help()
