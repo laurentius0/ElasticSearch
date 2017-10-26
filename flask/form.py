@@ -45,7 +45,7 @@ def build_query(query):
             strQ += "({0}:{1}) AND".format(k[i], query[k[i]])
     strQ = strQ[:-4]
 
-    q = {"query": {"query_string":{"query" : strQ}}}
+    q = {"query":  {"query_string":{"query" : strQ}}}
 
     res= es.search(index="database", body=q, size=10)
 
