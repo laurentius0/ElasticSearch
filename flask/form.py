@@ -35,18 +35,15 @@ def build_query(query):
     """
     query: dictionary with results
     """
-
     k = list(query.keys())
 
     strQ = ""
-    for i in range(len(k)-1):
-        # -1 because the last element is my_form, we dont want that
+    for i in range(len(k)):
         if query[k[i]] != "":
             strQ += "({0}:{1}) AND".format(k[i], query[k[i]])
     strQ = strQ[:-4]
 
     q = {"query":  {"query_string":{"query" : strQ}}}
-
     res= es.search(index="database", body=q, size=10)
 
     return res

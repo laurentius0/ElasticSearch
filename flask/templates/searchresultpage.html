@@ -9,7 +9,7 @@
     <form action="/searchresultpage" method="GET">
     <img src="/static/images/Pinda.png" alt="Pinda" align="middle">
         <input type="text" name="query">
-        <button class='button' type="submit" name="my-form" value="ga" placeholder="kaas"><span>.Ga</span></button>
+        <button class='button' type="submit" value="ga" placeholder="kaas"><span>.Ga</span></button>
     </form>
     <br>
 
@@ -67,8 +67,8 @@
             <td>
             Auteur: {{ r['_source'][' Author'] }}
             </td>
-            <td>Jaar: <a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}&my-form=Zoek">{{ r['_source']['Year'] }}</a></td>
-            <td>Begeleider(s): <a href="/searchresultpage_adv/?Supervisor={{r['_source']['Supervisor']}}&my-form=Zoek">{{ r['_source']['Supervisor'] }}</a></td>
+            <td>Jaar: <a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}">{{ r['_source']['Year'] }}</a></td>
+            <td>Begeleider(s): <a href="/searchresultpage_adv/?Supervisor={{r['_source']['Supervisor']}}">{{ r['_source']['Supervisor'] }}</a></td>
           </tr>
         </table>
         <br>
