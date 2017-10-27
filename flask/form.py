@@ -76,6 +76,8 @@ def advanced_search_page():
             searchresult['hits']['hits'] = [add_facets(searchresult['hits']['hits'])] + searchresult['hits']['hits']
             searchresult['hits']['hits'] = searchresult['hits']['hits'][:10]
 
+            histogramdata = create_hist(searchresult["hits"]["hits"])
+
             for result in searchresult["hits"]["hits"][1::]:
                 if 'Abstract' in result['_source'].keys():
                     abstracts = result['_source']['Abstract']
