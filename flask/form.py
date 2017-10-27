@@ -134,11 +134,17 @@ def create_hist(results):
     x = yearList
     print(x)
     print("bins",np.arange(max(x) - min(x)) + min(x))
-
-    n, bins, patches = plt.hist(x, bins=np.arange(max(x) + 2 - min(x)+2) + min(x)-1, facecolor='green', align='left', normed=True)
-    plt.xticks(np.arange(max(x) + 2 - min(x) + 2) + min(x)-1)
+    plt.figure(figsize=(10, 4))
+    n, bins, patches = plt.hist(x, bins=np.arange(max(x) + 2 - min(x)+2) + min(x)-1, facecolor='green', align='left', normed=True, rwidth=0.9)
+    plt.xticks(np.arange(max(x) + 2 - min(x) + 2) + min(x)-1, rotation='45')
+    f = plt.gca()
+    f.axes.yaxis.set_ticklabels([])
+    f.axes.yaxis.set_visible(False)
+    f.spines['top'].set_visible(False)
+    f.spines['left'].set_visible(False)
+    f.spines['right'].set_visible(False)
     buffered = BytesIO()
-    plt.savefig(buffered, format='png')
+    plt.savefig(buffered, format='png', dpi=100)
     img_str = base64.b64encode(buffered.getvalue())
     return urllib.parse.quote(img_str)
 
