@@ -70,6 +70,9 @@
             <td>Jaar: <a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}&my-form=Zoek">{{ r['_source']['Year'] }}</a></td>
             <td>Begeleider(s): <a href="/searchresultpage_adv/?Supervisor={{r['_source']['Supervisor']}}&my-form=Zoek">{{ r['_source']['Supervisor'] }}</a></td>
           </tr>
+          <tr>
+            <td>Faculteit: <a href="/searchresultpage_adv/?Faculty={{r['_source']['Faculty']}}&my-form=Zoek">{{ r['_source']['Faculty'] }}</a></td>
+          </tr>
         </table>
         <br>
         {% endif %}
