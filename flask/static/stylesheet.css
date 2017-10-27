@@ -1,8 +1,18 @@
 body            { font-family: sans-serif; background: white; }
 a, h1, h2       { color: #b09891; }
+a:link {
+    text-decoration: none;
+}
 h1, h2          { font-family: 'Georgia', serif; margin: 0; }
 h1              { border-bottom: 2px solid white; }
 h2              { font-size: 1.2em; }
+
+
+#sidebar {
+    float: right;
+    top:0; bottom:0; left:0; right:50;
+    width:250px;
+}
 
 .page           { margin: 2em auto; width: 35em; border: 5px solid #ccc;
                   padding: 0.8em; background: #f9f9f9; }
@@ -13,7 +23,9 @@ h2              { font-size: 1.2em; }
 .add-entry dl   { font-weight: bold; }
 .metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
                   margin-bottom: 1em; background: black; }
-table, th, td   { border: 0px; text-align: left; margin: 10px; }
+table   { border: 1px solid #f2f2f2; text-align: left; margin: 10px; border-radius: 4px;
+          padding: 3px; }
+th, td   { border: none; text-align: left; margin: 10px; border-radius: 4px; }
 .flash          { background: #cee5F5; padding: 0.5em;
                   border: 1px solid #aacbe2; }
 .error          { background: red; padding: 0.5em; }
@@ -25,7 +37,7 @@ input[type=text]{ text-align: left;
 		              font-size: 16px;
 		              background-color: white;
 		              background-image: url('https://www.w3schools.com/howto/searchicon.png');
-		              background-position: 10px 10px; 
+		              background-position: 10px 10px;
 		              background-repeat: no-repeat;
 		              padding: 12px 5px 12px 40px;
 		              -webkit-transition: width 0.4s ease-in-out;
@@ -60,3 +72,5 @@ input[type=text]{ text-align: left;
 	                right: 0; }
 input[type=text]:focus {
 		              width: 25%; }
+
+

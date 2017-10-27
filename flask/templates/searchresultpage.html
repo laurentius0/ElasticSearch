@@ -6,16 +6,40 @@
 </head>
 
 <body>
-    <h1>Enter some text to search through the database!</h1>
     <form action="/searchresultpage" method="GET">
+    <img src="/static/images/Pinda.png" alt="Pinda" align="middle">
         <input type="text" name="query">
-        <input type="submit" name="my-form" value="ga">
+        <button class='button' type="submit" name="my-form" value="ga" placeholder="kaas"><span>.Ga</span></button>
     </form>
     <br>
 
+
+
     {%if result is not string %}
+    <div id="sidebar">
+        <table>
+            <tr>
+                <td>Faculteit</td>
+            </tr>
+                {% for key, value in result[0].items() %}
+                <tr>
+                    <td><input type="radio" name='fac'></td>
+                    <td>{{key}} ({{value}})</td>
+                </tr>
+                {% endfor %}
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button value="filter">filter</button></td>
+            </tr>
+        </table>
+    </div>
+
         {% for r in result %}
-        <table width=70% align="left">
+        {% if loop.index > 1 %}
+        <table width=75% align="left" frame="box">
           <tr>
             <th colspan="3">
                 {% if r['_source']['Title']|length > 80  %}
@@ -33,19 +57,22 @@
                     No abstract found.
                 {% endif %}
                 </td><td colspan="1">
+                    {% if r['_source']['Abstract'] %}
                     <img src="data:image/png;base64,{{r['_source']['wordcloud']}}"/>
+                    {% endif %}
                 </td>
             </td>
           </tr>
           <tr>
             <td>
-            {{ r['_source'][' Author'] }}
+            Auteur: {{ r['_source'][' Author'] }}
             </td>
-            <td><a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}&my-form=Zoek">{{ r['_source']['Year'] }}</a></td>
-            <td></td>
+            <td>Jaar: <a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}&my-form=Zoek">{{ r['_source']['Year'] }}</a></td>
+            <td>Begeleider(s): <a href="/searchresultpage_adv/?Supervisor={{r['_source']['Supervisor']}}&my-form=Zoek">{{ r['_source']['Supervisor'] }}</a></td>
           </tr>
         </table>
         <br>
+        {% endif %}
         {% endfor %}
 
     {%endif%}

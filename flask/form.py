@@ -45,11 +45,25 @@ def build_query(query):
             strQ += "({0}:{1}) AND".format(k[i], query[k[i]])
     strQ = strQ[:-4]
 
-    q = {"query": {"query_string":{"query" : strQ}}}
+    q = {"query":  {"query_string":{"query" : strQ}}}
 
     res= es.search(index="database", body=q, size=10)
 
     return res
+
+
+def add_facets(results):
+    """
+    only returns faculty for now, can optionally do more.
+    """
+    r = {}
+    for i in results:
+        if "Faculty" in i['_source'].keys():
+            if i['_source']['Faculty'] in r.keys():
+                r[i['_source']['Faculty']] += 1
+            else:
+                r[i['_source']['Faculty']] = 1
+    return r
 
 
 @app.route('/searchresultpage_adv/')
@@ -58,7 +72,12 @@ def advanced_search_page():
         r_dict = request.args.to_dict()
         searchresult = build_query(r_dict)
         if searchresult["hits"]["total"] > 0:
-            for result in searchresult["hits"]["hits"]:
+
+            # Add all faculties for faceted search:
+            searchresult['hits']['hits'] = [add_facets(searchresult['hits']['hits'])] + searchresult['hits']['hits']
+            searchresult['hits']['hits'] = searchresult['hits']['hits'][:10]
+
+            for result in searchresult["hits"]["hits"][1::]:
                 if 'Abstract' in result['_source'].keys():
                     abstracts = result['_source']['Abstract']
                     abstracts = clean_text(abstracts)
@@ -74,9 +93,14 @@ def search_result_page():
     if request.method=="GET":
         searchtext = request.args['query']
         query = getQuery(searchtext)
-        searchresult = es.search(index='database',  body=query)
+        searchresult = es.search(index='database',  body=query, size=1000)
         if searchresult["hits"]["total"] > 0:
-            for result in searchresult["hits"]["hits"]:
+
+            # Add all faculties for faceted search:
+            searchresult['hits']['hits'] = [add_facets(searchresult['hits']['hits'])] + searchresult['hits']['hits']
+            searchresult['hits']['hits'] = searchresult['hits']['hits'][:10]
+
+            for result in searchresult["hits"]["hits"][1::]:
                 if 'Abstract' in result['_source'].keys():
                     abstracts = result['_source']['Abstract']
                     abstracts = clean_text(abstracts)
@@ -89,7 +113,7 @@ def search_result_page():
 
 def clean_text(text):
     words = text.lower().split(" ")
-    words = list(filter(lambda a: a not in ['geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
+    words = list(filter(lambda a: a not in ['also', 'waardoor', 'gaan', 'gaat','die', 'hun', 'paragraaf', 'kernpunten', 'niet','geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
     return ' '.join(words)
 
 def generateWordCloud(text):
