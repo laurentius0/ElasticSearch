@@ -36,6 +36,8 @@ def build_query(query):
     query: dictionary with results
     """
     k = list(query.keys())
+    print(query)
+    print()
 
     strQ = ""
     for i in range(len(k)):
@@ -44,7 +46,7 @@ def build_query(query):
     strQ = strQ[:-4]
 
     q = {"query":  {"query_string":{"query" : strQ}}}
-    res= es.search(index="database", body=q, size=10)
+    res= es.search(index="database", body=q, size=1000)
 
     return res
 

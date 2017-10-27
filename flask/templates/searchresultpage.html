@@ -18,22 +18,24 @@
     {%if result is not string %}
     <div id="sidebar">
         <table>
-            <tr>
-                <td>Faculteit</td>
-            </tr>
+            <form action="/searchresultpage_adv/" method="GET">
+                <tr>
+                    <td>Faculteit</td>
+                </tr>
                 {% for key, value in result[0].items() %}
                 <tr>
-                    <td><input type="radio" name='fac'></td>
+                    <td><input type="radio" name='Faculty' value="{{key}}"></td>
                     <td>{{key}} ({{value}})</td>
                 </tr>
                 {% endfor %}
-            <tr>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button value="filter">filter</button></td>
-            </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type='submit' value="filter"></td>
+                </tr>
+            </form>
         </table>
 
     </div>
@@ -73,7 +75,7 @@
             <td>Begeleider(s): <a href="/searchresultpage_adv/?Supervisor={{r['_source']['Supervisor']}}">{{ r['_source']['Supervisor'] }}</a></td>
           </tr>
           <tr>
-            <td>Faculteit: <a href="/searchresultpage_adv/?Faculty={{r['_source']['Faculty']}}&my-form=Zoek">{{ r['_source']['Faculty'] }}</a></td>
+            <td>Faculteit: <a href="/searchresultpage_adv/?Faculty={{r['_source']['Faculty']}}">{{ r['_source']['Faculty'] }}</a></td>
           </tr>
         </table>
         <br>
