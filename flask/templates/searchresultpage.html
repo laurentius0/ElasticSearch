@@ -37,6 +37,8 @@
                 </tr>
             </form>
         </table>
+        <img src="data:image/png;base64,{{histogram}}"/>
+
     </div>
 
         {% for r in result %}
@@ -61,6 +63,7 @@
                 </td><td colspan="1">
                     {% if r['_source']['Abstract'] %}
                     <img src="data:image/png;base64,{{r['_source']['wordcloud']}}"/>
+
                     {% endif %}
                 </td>
             </td>
@@ -71,6 +74,9 @@
             </td>
             <td>Jaar: <a href="/searchresultpage_adv/?Year={{r['_source']['Year']}}">{{ r['_source']['Year'] }}</a></td>
             <td>Begeleider(s): <a href="/searchresultpage_adv/?Supervisor={{r['_source']['Supervisor']}}">{{ r['_source']['Supervisor'] }}</a></td>
+          </tr>
+          <tr>
+            <td>Faculteit: <a href="/searchresultpage_adv/?Faculty={{r['_source']['Faculty']}}&my-form=Zoek">{{ r['_source']['Faculty'] }}</a></td>
           </tr>
         </table>
         <br>
