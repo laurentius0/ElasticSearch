@@ -99,13 +99,16 @@ def search_result_page():
             # Add all faculties for faceted search:
             searchresult['hits']['hits'] = [add_facets(searchresult['hits']['hits'])] + searchresult['hits']['hits']
             searchresult['hits']['hits'] = searchresult['hits']['hits'][:10]
+            
+            # create hist
+            histogramdata = create_hist(searchresult["hits"]["hits"])
 
             for result in searchresult["hits"]["hits"][1::]:
                 if 'Abstract' in result['_source'].keys():
                     abstracts = result['_source']['Abstract']
                     abstracts = clean_text(abstracts)
                     result['_source']['wordcloud'] = generateWordCloud(abstracts)
-            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"])
+            return render_template("searchresultpage.html", result = searchresult["hits"]["hits"], histogram = histogramdata)
         else:
             return render_template("searchresultpage.html", result = "No result found.")
     else:
@@ -115,6 +118,32 @@ def clean_text(text):
     words = text.lower().split(" ")
     words = list(filter(lambda a: a not in ['also', 'waardoor', 'gaan', 'gaat','die', 'hun', 'paragraaf', 'kernpunten', 'niet','geeft', 'meer', 'thesis', 'de', 'het', 'deze', 'wordt', 'een', 'voor', 'en', 'zijn', 'aan', 'van', 'dat', 'op', 'werd', 'met', 'er', 'als', 'te', 'uit', 'dit', 'om', 'tussen', 'geen', 'heeft', 'ook'], words))
     return ' '.join(words)
+
+def create_hist(results):
+    import numpy as np
+    import matplotlib.mlab as mlab
+    import matplotlib.pyplot as plt
+    import base64
+    import urllib.parse
+
+    from io import BytesIO
+
+    yearList = []
+    for result in results:
+        try:
+            yearList += [int(result['_source']['Year'])]
+        except:
+            pass
+    x = yearList
+    print(x)
+    print("bins",np.arange(max(x) - min(x)) + min(x))
+
+    n, bins, patches = plt.hist(x, bins=np.arange(max(x) + 2 - min(x)+2) + min(x)-1, facecolor='green', align='left', normed=True)
+    plt.xticks(np.arange(max(x) + 2 - min(x) + 2) + min(x)-1)
+    buffered = BytesIO()
+    plt.savefig(buffered, format='png')
+    img_str = base64.b64encode(buffered.getvalue())
+    return urllib.parse.quote(img_str)
 
 def generateWordCloud(text):
     import urllib.parse

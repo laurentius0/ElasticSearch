@@ -35,6 +35,8 @@
                 <td><button value="filter">filter</button></td>
             </tr>
         </table>
+        <img src="data:image/png;base64,{{histogram}}"/>
+
     </div>
 
         {% for r in result %}
@@ -59,6 +61,7 @@
                 </td><td colspan="1">
                     {% if r['_source']['Abstract'] %}
                     <img src="data:image/png;base64,{{r['_source']['wordcloud']}}"/>
+
                     {% endif %}
                 </td>
             </td>
