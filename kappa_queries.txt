@@ -5,16 +5,16 @@
     </description>
 </topic>
 J1:
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+1   0
+2   1
+3   1
+4   0
+5   0
+6   0
+7   0
+8   1
+9   1
+10  0
 
 J2:
 1
@@ -35,16 +35,16 @@ J2:
     </description>
 </topic>
 J1:
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+1   0
+2   1
+3   0
+4   0
+5   0
+6   0
+7   0
+8   0
+9   0
+10  1
 
 J2:
 1
@@ -59,21 +59,21 @@ J2:
 10
 
 <topic number="3"  >
-    <query>schadevergoeding verkrachting</query>
-    <description>Find information about how compensation should be handled after a rape.
+    <query>quantum physics</query>
+    <description>Find information about quantum physics.
     </description>
 </topic>
 J1:
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
+1   1
+2   1
+3   1
+4   1
+5   1
+6   1
+7   1
+8   1
+9   1
+10  1
 
 J2:
 1
@@ -89,7 +89,7 @@ J2:
 
 <topic number="4"  >
     <query>travelling light speed</query>
-    <description>I'm looking for information travelling potentially at light speed.
+    <description>I'm looking for papers about 
     </description>
 </topic>
 J1:
@@ -117,21 +117,21 @@ J2:
 10
 
 <topic number="5"  >
-    <query>bitcoin blockchain kwantumcomputer</query>
-    <description>Find information on the Kansas City Southern railroad.
+    <query>blockchain</query>
+    <description>I would like to find papers on blockchain technology
     </description>
 </topic>
 J1:
-1x
-2x
-3x
-4x
-5x
-6x
-7x
-8x
-9x
-10x
+1   1
+2   1
+3   1
+4   0
+5   1
+6   1
+7   1
+8   1
+9   1
+10  1
 
 J2:
 1x
