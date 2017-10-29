@@ -188,3 +188,203 @@ FT: 5
 TODO: kappa berekenen
 
 Average precision @ 10: (0.3 + 0 + 1 + 0.4 + 0.8) / 5 = 0.5
+
+
+
+================================================================================
+BM25 as search method:
+================================================================================
+
+
+<topic number="1"  >
+    <query>q learning reinforcement learning</query>
+    <language> both </language>
+    <description>Find a thesis discussing q learning, not a thesis merely using q learning in a single experiment. It must be the main subject.
+    </description>
+</topic>
+J1:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+J2:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+TT: 
+FF: 
+FT: 
+TF: 
+
+p@10: 
+
+<topic number="2"  >
+    <query>traumatische evaringen babies</query>
+    <language> Dutch </language>
+    <description>I'm looking about how babies process traumatic experiences. 
+    </description>
+</topic>
+J1:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+J2:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+TT: 
+FF: 
+FT: 
+TF: 
+
+p@10: 
+
+<topic number="3"  >
+    <query>quantum physics</query>
+    <description>Find information about quantum physics.
+    </description>
+</topic>
+J1:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+J2:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+TT: 
+FF: 
+FT: 
+TF: 
+
+p@10: 
+
+
+<topic number="4"  >
+    <query>measuring gravitational waves</query>
+    <description>I'm looking for papers about the measuring of gravitational waves
+    </description>
+</topic>
+J1:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+J2:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+TT: 
+FF: 
+FT: 
+TF: 
+
+p@10: 
+
+<topic number="5"  >
+    <query>blockchain</query>
+    <description>I would like to find papers on blockchain technology
+    </description>
+</topic>
+J1:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+J2:
+1   
+2   
+3   
+4   
+5   
+6   
+7   
+8   
+9   
+10  
+
+TT: 
+FF: 
+FT: 
+TF: 
+
+p@10: 
+
+Total: 
+TT: 
+FF: 
+TF: 
+FT: 
+
+TODO: kappa berekenen
+
+Average precision @ 10: 
