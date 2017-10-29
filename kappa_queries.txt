@@ -33,7 +33,7 @@ FF: 5
 FT: 1
 TF: 1
 
-p@10: (1/2 + 2/3 + 3/ 8) / 3 = 0.513
+p@10: 0.3
 
 <topic number="2"  >
     <query>traumatische evaringen babies</query>
@@ -142,7 +142,7 @@ FF: 4
 FT: 1
 TF: 1
 
-p@10: (1 + 1 + 1 + 4/7) / 4 = 0.893
+p@10: 0.4
 
 <topic number="5"  >
     <query>blockchain</query>
@@ -177,7 +177,7 @@ TT: 8
 FF: 0
 FT: 1
 TF: 1
-p@10: (1 + 1 + 1+ 4/6 + 5/7 + 6/8 + 7/9 + 8/10) / 8 = 0.839
+p@10: 0.8
 
 Total: 
 TT: 25
@@ -187,4 +187,4 @@ FT: 5
 
 TODO: kappa berekenen
 
-Average precision @ 10: (0.513 + 0 + 1 + 0.893 + 0.839) / 5 = 0.649
+Average precision @ 10: (0.3 + 0 + 1 + 0.4 + 0.8) / 5 = 0.5
