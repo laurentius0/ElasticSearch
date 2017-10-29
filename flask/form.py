@@ -31,23 +31,41 @@ def getQuery(text):
 def advanced_search():
     return render_template("advanced-search.html")
 
-def build_query(query):
+def build_query(query, faculties):
     """
     query: dictionary with results
     """
     k = list(query.keys())
     print(query)
-    print()
+    print('k:', k)
 
     strQ = ""
+    facultystring = ""
     for i in range(len(k)):
         if query[k[i]] != "":
-            strQ += "({0}:{1}) AND".format(k[i], query[k[i]])
-    strQ = strQ[:-4]
+            strQ += "({0}:{1}) AND ".format(k[i], query[k[i]])
+    strQ = strQ[:-5]
 
-    q = {"query":  {"query_string":{"query" : strQ}}}
+    for i in range(len(faculties)):
+        facultystring += "{0} OR ".format(faculties[i])
+    facultystring = facultystring[:-4]
+
+    print("FS: ", facultystring)
+    # q = {"query":  {"query_string":{"query" : strQ}}}
+    q = {
+    "query": {
+        "bool": {
+          "should": [
+            { "match": { "query": strQ } }
+          ],
+          "must": [
+            { "match": {"Faculty": facultystring}}
+          ]
+        }
+    }
+    }
     res= es.search(index="database", body=q, size=1000)
-
+    print(q)
     return res
 
 
@@ -69,7 +87,10 @@ def add_facets(results):
 def advanced_search_page():
     if request.method=="GET":
         r_dict = request.args.to_dict()
-        searchresult = build_query(r_dict)
+        r_dict.pop("Faculty", None)
+        faculties = request.args.getlist('Faculty')
+        print('rdict:', faculties)
+        searchresult = build_query(r_dict, faculties)
         if searchresult["hits"]["total"] > 0:
 
             # Add all faculties for faceted search:

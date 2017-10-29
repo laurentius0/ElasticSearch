@@ -19,12 +19,13 @@
     <div id="sidebar">
         <table>
             <form action="/searchresultpage_adv/" method="GET">
+                <!-- <input type="hidden" name="query" value="<?php echo htmlspecialchars($_GET['query']);?>"> -->
                 <tr>
                     <td>Faculteit</td>
                 </tr>
                 {% for key, value in result[0].items() %}
                 <tr>
-                    <td><input type="radio" name='Faculty' value="{{key}}"></td>
+                    <td><input type="checkbox" name='Faculty' value="{{key}}"></td>
                     <td>{{key}} ({{value}})</td>
                 </tr>
                 {% endfor %}
